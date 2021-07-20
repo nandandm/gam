@@ -27,8 +27,8 @@
 	<div class="container">
 
 		<header>
-			<h1>nandan Gurus DevOps & Cloud Learning Platform</h1> 
-			<h4>Contact: +91 2000 - Email: info@gamutgurus.com</h4> 
+			<h1>gamutggurus DevOps & Cloud Learning Platform</h1> 
+			<h4>Contact: +91 7259172277 - Email: info@gamutgurus.com</h4> 
 		</header>
 
 		<div id="tabs">
