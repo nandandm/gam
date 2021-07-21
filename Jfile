@@ -59,7 +59,7 @@ stage('deployment QA') {
 
                             steps {
                 
- deploy adapters: [tomcat8(credentialsId: 'to', path: ' /manager/text', url: 'http://13.233.3.122:8080')], contextPath: 'gamutkart', war: '**/target/*.war'
+deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://13.233.3.122:8080/')], contextPath: 'gamutkart', war: '**/target/*.war'
 				       
                              
                                                          }
