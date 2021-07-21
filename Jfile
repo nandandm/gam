@@ -67,13 +67,11 @@ deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://13.233.3.1
     
 }
 
-  post { 
-        always { 
-          
-	emailext body: 'building java project logs you can check at', recipientProviders: [developers()], subject: 'build job ', to: 'nandanbetti@gmail.com'
-        
-	}
-
-       }              
+           post {
+        always {
+	
+            mail bcc: '', body: 'build logs url ', cc: '', from: '', replyTo: '', subject: 'regarding build', to: 'nandanbetti@gmail.com'
+        }
+    }    
     }
 }
