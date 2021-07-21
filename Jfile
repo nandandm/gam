@@ -68,10 +68,10 @@ deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://13.233.3.1
 }
 
            post {
-        always {
+                    always {
 	
-            mail bcc: '', body: 'build logs url ', cc: '', from: '', replyTo: '', subject: 'regarding build', to: 'nandanbetti@gmail.com'
-        }
-    }    
+            emailext body: 'building', recipientProviders: [developers()], subject: 'build', to: 'nandanbetti@gmail.com'
+                            }
+                }    
     }
 }
