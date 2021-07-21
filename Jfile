@@ -68,7 +68,9 @@ deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://13.233.3.1
 }
 
 	  stage('Email Notification') {
-                    
+                   
+		   steps {
+		   
                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {		    
 		    
 		           always {
@@ -77,6 +79,8 @@ deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://13.233.3.1
                           
 			  }
                 }    
+    }
+    
     }
     
    } 
