@@ -43,7 +43,7 @@ environment {
 
 			steps {
 				
-		deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://65.0.185.111:8080')], contextPath: 'gamutkart', war: '**/target/*.war'
+deploy adapters: [tomcat8(credentialsId: '75e01ada-2ad2-4acf-8a77-fde8310f0839', path: '', url: 'http://65.0.185.111:8080')], contextPath: 'gamutkart', war: '**/target/*.war'
 				
 			}
 			
