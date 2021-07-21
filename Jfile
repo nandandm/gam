@@ -1,0 +1,72 @@
+pipeline {
+    agent any
+    parameters { 
+                 string(name: 'TARGET')
+
+                                       
+        }     
+
+environment {
+                      	DEPLOY = "${TARGET}"
+                                
+                 }
+
+    stages {
+		stage('Clone-Repo') {
+			steps {
+				checkout scm
+			}
+		}
+	
+		stage('Build') {
+			steps {
+		               sh 'mvn install -Dmaven.test.skip=true'
+			}
+		}
+		
+		stage('Unit Tests') {
+			steps {
+				sh 'mvn compiler:testCompile'
+				sh 'mvn surefire:test'
+				junit 'target/**/*.xml'
+			}
+		}
+
+	
+		stage('Deployment SIT') {
+                      
+                      when {
+                                environment name: 'DEPLOY', value: 'SIT'
+                     
+
+                                                     }
+
+			steps {
+				
+		deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://65.0.185.111:8080')], contextPath: 'gamutkart', war: '**/target/*.war'
+				
+			}
+			
+		}
+                                                                     
+stage('deployment QA') {
+
+
+                          when { 
+                                        environment name: 'DEPLOY' , value: 'QA'
+                                                
+                                                       }
+
+                            steps {
+                
+ deploy adapters: [tomcat8(credentialsId: 'to', path: ' /manager/text', url: 'http://13.233.3.122:8080')], contextPath: 'gamutkart', war: '**/target/*.war'
+				       
+                             
+                                                         }
+
+    
+}
+
+                     
+    }
+}
