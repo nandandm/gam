@@ -68,11 +68,12 @@ deploy adapters: [tomcat8(credentialsId: 'to', path: '', url: 'http://13.233.3.1
 }
 
 	  post {
-                    always {
+                    
+                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {		    
+		    
+		           always {
 		   
-		   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-	
-            emailext body: 'building', recipientProviders: [developers()], subject: 'build', to: 'nandanbetti@gmail.com'
+		  emailext body: 'building', recipientProviders: [developers()], subject: 'build', to: 'nandanbetti@gmail.com'
                           
 			  }
                 }    
