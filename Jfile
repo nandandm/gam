@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     parameters { 
                  string(name: 'TARGET')
 
@@ -13,12 +13,14 @@ environment {
 
     stages {
 		stage('Clone-Repo') {
+		agent { label 'slave' }
 			steps {
 				checkout scm
 			}
 		}
 	
 		stage('Build') {
+		agent { label 'node' }
 			steps {
 		               sh 'mvn install -Dmaven.test.skip=true'
 			}
