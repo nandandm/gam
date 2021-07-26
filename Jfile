@@ -27,7 +27,7 @@ environment {
 		}
 		
 		stage('Unit Tests') {
-		agent any
+		agent { label 'node' }
 			steps {
 				sh 'mvn compiler:testCompile'
 				sh 'mvn surefire:test'
